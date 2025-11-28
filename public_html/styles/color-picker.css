@@ -1,0 +1,204 @@
+ .echoFlower {
+     margin-top: 6vh;
+ }
+/* Your existing CSS code */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    min-height: 100vh;
+    padding: 0px 15px 15px 15px;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+}
+
+.container {
+    max-width: 600px;
+    padding: 0px 15px 15px 15px;
+    margin: 20px 20px 20px 20px;
+    border: 1px solid #ff00ad;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #3c0002;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    color: #ff93e4;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.color-picker-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.IroSliderGradient {
+    border-color: #ff00ad !important;
+}
+.IroWheelBorder {
+    border-color: #ff00ad !important;
+}
+
+.color-picker {
+    width: 180px;
+    height: 180px;
+}
+
+.color-indicator {
+    width: 160px;
+    height: 160px;
+    border-radius: 10px;
+    margin-top: 10px;
+    border: 2px solid #ff00ad;
+    background-color: rgba(171, 0, 137, 1); /* Initial color */
+}
+
+#color-values {
+    margin-bottom: 20px;
+}
+
+.color-value-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+#color-values p {
+    margin: 0;
+    font-size: 14px;
+    width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#color-values button {
+    padding: 2px 4px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff93e4;
+    color: #3c0002;
+    cursor: pointer;
+}
+
+#color-values button:hover {
+    background-color: #ff00ad;
+}
+
+h3 {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ff00ad;
+    background-color: #000;
+    color: #ff93e4;
+    border-radius: 5px;
+}
+
+.alpha-slider-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.alpha-slider {
+    flex: 1;
+    background: linear-gradient(to right, rgba(171, 0, 137, 0) 0%, rgba(171, 0, 137, 1) 100%);
+    -webkit-appearance: none;
+    height: 8px;
+    border-radius: 5px;
+    border: 1px solid #ff00ad;
+    outline: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.alpha-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ab0089;
+    cursor: pointer;
+    border: 2px solid #333;
+}
+
+.alpha-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #ff00ad;
+    background: #ab0089;
+    cursor: pointer;
+}
+
+.alpha-slider::-ms-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #ff00ad;
+    background: #ab0089;
+    cursor: pointer;
+}
+/*@media only screen and (max-width: 600px) {
+    .echoFlower { 
+        width: auto;
+        height: 40vh;
+        max-height: 360px;
+
+        margin-top: 6vh;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .echoFlower {
+        width: auto;
+        height: 40vh;
+        max-width: 80%;
+        max-height: 45%;
+
+        margin-top: 6vh;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .echoFlower {
+        width: auto;
+        height: 40vh;
+        max-width: 80%;
+        max-height: 45%;
+
+        margin-top: 22vh;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .echoFlower {
+        width: auto;
+        height: 40vh;
+        max-width: 80%;
+        max-height: 45%;
+
+        margin-top: 22vh;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+}*/
+

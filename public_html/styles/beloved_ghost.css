@@ -1,0 +1,24 @@
+html {
+    background-color: #5C0005;
+}
+
+body {
+    color: #FF8EF8;
+    padding-left: 15px;
+}
+
+
+th, td {
+    color: #FF8EF8;
+    padding-left: 100px;
+}
+
+a {
+    color: #74E0FF;
+}
+a:hover {
+    color: #FF51C0 !important;
+}
+a:visited {
+    color: #53A1B7;
+}

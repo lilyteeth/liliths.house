@@ -1,0 +1,43 @@
+public_html/wall/
+public_html/files/
+public_html/sidebery-imports/
+public_html/kitt_guides/
+.hide/
+
+## Node modules - ignore all dependencies installed by npm
+# /node_modules/
+# 
+# # Log files - ignore log files generated during app execution
+# *.log
+# 
+# # Build directories - ignore build output directories
+# /dist/
+# /build/
+# 
+# # Operating system files - ignore system files
+# .DS_Store         # macOS
+# Thumbs.db         # Windows
+# 
+# # Environment variables - ignore files containing sensitive information
+# .env
+
+### Temporary files - ignore temporary files created by your text editor
+#*.tmp
+#*.temp
+#
+## IDE specific files - ignore configuration files for certain IDEs
+#.vscode/          # Visual Studio Code
+#.idea/            # JetBrains IDEs
+#
+## Ignore specific file types
+#*.bak             # Backup files
+#*.swp             # Swap files
+#*.xcf
+#
+## Ignore coverage reports for testing
+#/coverage/
+#
+## Ignore Python compiled files
+#__pycache__/
+#*.pyc
+

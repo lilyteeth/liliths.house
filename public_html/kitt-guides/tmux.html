@@ -1,0 +1,185 @@
+<!-- vim: set nomodeline: -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>/home/lilish/Documents/kitt_guides/so-you-wana-multiplex.conf</title>
+<meta name="colorscheme" content="vim"></meta>
+<style>
+* {font-family: monospace}
+body {background-color: #3c0002; color: #ff00ad}
+.Comment {color: #80a0ff}
+.Constant {color: #ffa0a0}
+</style>
+</head>
+<body style="display: flex">
+<pre>
+<span class="Comment">##</span>
+<span class="Comment">## So you Want to Multiplex</span>
+<span class="Comment">## ========================</span>
+<span class="Comment">## (or maybe you just want tabs)</span>
+<span class="Comment">##</span>
+<span class="Comment">## tmux can help! tmux is essentially just a terminal emulator that runs in a</span>
+<span class="Comment">## terminal. this file is a tmux configuration, which by default lives in</span>
+<span class="Comment">## ~/.tmux.conf (pwz put me there &gt;_&lt;)</span>
+<span class="Comment">##</span>
+<span class="Comment">## to start tmux, run `tmux new-session -s &lt;name&gt;`... or just `tmux`</span>
+<span class="Comment">## did it work? congrats! you're in a terminal multiplexing session :D</span>
+<span class="Comment">##</span>
+<span class="Comment">## you can invoke tmux commands within a session by running</span>
+<span class="Comment">## `tmux &lt;command&gt; [&lt;args&gt;]`, for example try running this:</span>
+<span class="Comment">##</span>
+<span class="Comment">##     tmux split-window # or just `tmux sp`</span>
+<span class="Comment">##</span>
+<span class="Comment">## tmux also lets you bind keys to commands, with this config (mooostly</span>
+<span class="Comment">## defaults, however these binds are not default):</span>
+<span class="Comment">##</span>
+<span class="Comment">## * Ctrl+b / does `split-window -v`</span>
+<span class="Comment">## * Ctrl+b ' does `split-window -h`</span>
+<span class="Comment">## </span>
+<span class="Comment">## most keys in tmux are bound behind a prefix key, and the default prefix is</span>
+<span class="Comment">## Ctrl+B, or C-b in tmux-speak. bindings are highly customizable, so.. please</span>
+<span class="Comment">## don't worry too much if you don't like how it feels yet! for now, in in a new</span>
+<span class="Comment">## terminal, not in tmux, try:</span>
+<span class="Comment">##</span>
+<span class="Comment">##     tmux attach-client # or `tmux a`</span>
+<span class="Comment">##</span>
+<span class="Comment">## and try typing something in. it should appear in both tmux clients!  try</span>
+<span class="Comment">## detaching now, by running (this time in one of the tmux terminals):</span>
+<span class="Comment">##</span>
+<span class="Comment">##     tmux detach-client # or `tmux d`, or press C-b d</span>
+<span class="Comment">## </span>
+<span class="Comment">## you can even detach all clients and the tmux session will stick around</span>
+<span class="Comment">## waiting to be attached to again, which feels like having pocket dimension</span>
+<span class="Comment">## terminals :3</span>
+<span class="Comment">##</span>
+<span class="Comment">## what you might call tabs tmux calls windows, splits within tabs it calls panes.</span>
+<span class="Comment">## so to make a &quot;new tab&quot;, run (in an attached client)</span>
+<span class="Comment">##</span>
+<span class="Comment">##     tmux new-window # or `tmux neww`, or press C-b c</span>
+<span class="Comment">##     # (C-b n is bound to &quot;next-window&quot;)</span>
+<span class="Comment">##</span>
+<span class="Comment">## windows will close automatically when you exit the last terminal in it, which</span>
+<span class="Comment">## is the main way i use it. (but if for some reason you need it, tmux</span>
+<span class="Comment">## kill-window exists)</span>
+<span class="Comment">##</span>
+<span class="Comment">## Ctrl+B can feel a little ungainly to press all the time but its actually</span>
+<span class="Comment">## pretty hard to find keys which don't overlap with keys used by other terminal</span>
+<span class="Comment">## programs; you *can* use a nicer prefix key that conflicts (such as Escape)</span>
+<span class="Comment">## and bind for example Escape Escape to passthrough (with the send-prefix</span>
+<span class="Comment">## command!) but,, thats up to you.</span>
+<span class="Comment">##</span>
+<span class="Comment">## also man 1 tmux is your friend :3 (fr i learned sm looking stuff up while</span>
+<span class="Comment">##  writing this..)</span>
+<span class="Comment">##</span>
+<span class="Comment">## good luck! &lt;3</span>
+
+<span class="Comment">### options</span>
+<span class="Comment">##  =======</span>
+
+<span class="Comment">## enables resizing panes by click+dragging on borders</span>
+set -g mouse on
+<span class="Comment">## enables sending the name of the running command to the containing</span>
+<span class="Comment">## terminal emulator so it can be set as the the X11 or wayland window title</span>
+set-option -g set-titles on
+<span class="Comment">## add a prefix to set-titles</span>
+set-option -g set-titles-string <span class="Constant">&quot;tmux: #W&quot;</span>
+
+<span class="Comment">## show an indicator when a program emits a bell for attention, as well as pass</span>
+<span class="Comment">## it on to the containing terminal</span>
+set-option -g visual-bell both
+
+<span class="Comment">## to be honest i did not take good notes on this when i was configuring it</span>
+<span class="Comment">## years ago.. but i was trying to get vim to display in full color within</span>
+<span class="Comment">## tmux.. and it does work...</span>
+set-option -g default-terminal <span class="Constant">&quot;xterm-256color&quot;</span>
+set-option -ga terminal-overrides <span class="Constant">&quot;,xterm-256color:Tc&quot;</span>
+
+<span class="Comment">## themeing! yea :3</span>
+<span class="Comment">## this makes the status bar not have a background (bg=default)</span>
+set -g status-style fg=color4,bg=default
+<span class="Comment">## this makes the active window in the status does have a background</span>
+set -g window-status-current-style fg=color0,bg=color4
+<span class="Comment">## border color tweaks that work well with my terminal theme</span>
+set -g pane-active-border-style fg=magenta
+
+<span class="Comment">## timeout in milliseconds to let you press &lt;prefix&gt; key key key</span>
+<span class="Comment">## without having to repress &lt;prefix&gt;.. i made mine pretty short </span>
+set -g repeat-time 200
+
+<span class="Comment">## copy these environment variables when attaching</span>
+set-option -ga update-environment <span class="Constant">' DBUS_SESSION_BUS_ADDRESS DISPLAY'</span>
+
+<span class="Comment">## use built-in vi-like binds in copy-mode</span>
+set-option -g mode-keys vi
+
+
+<span class="Comment">### bindings</span>
+<span class="Comment">##  ========</span>
+
+<span class="Comment">## helpful variables in case you want to not use hjkl for directions</span>
+left=h 
+down=j
+up=k
+right=l
+
+<span class="Comment">## unbind all keys</span>
+<span class="Comment">#unbind-key -T prefix -a</span>
+<span class="Comment">#unbind-key -T copy-mode -a</span>
+
+<span class="Comment">## use escape as prefix</span>
+<span class="Comment">#set-option -g prefix Escape</span>
+<span class="Comment">#bind-key Escape send-prefix</span>
+<span class="Comment">#set-option -g escape-time 0</span>
+
+<span class="Comment">## re-execute the config (M-c means Alt+c)</span>
+bind-key -T prefix M-c source-file ~/.tmux.conf
+
+<span class="Comment">## the bindings below are not particuarly well thought out but i do find them a</span>
+<span class="Comment">## little more ergonomic than the defaults</span>
+bind-key -r -T prefix $up select-pane -U
+bind-key -r -T prefix $down select-pane -D
+bind-key -r -T prefix $left select-pane -L
+bind-key -r -T prefix $right select-pane -R
+bind-key -T prefix w last-pane
+bind-key -T prefix b last-window
+
+bind-key -r -T prefix M-$up resize-pane -U 5
+bind-key -r -T prefix M-$down resize-pane -D 5
+bind-key -r -T prefix M-$left resize-pane -L 5
+bind-key -r -T prefix M-$right resize-pane -R 5
+
+bind-key -r -T prefix C-$up resize-pane -U
+bind-key -r -T prefix C-$down resize-pane -D
+bind-key -r -T prefix C-$left resize-pane -L
+bind-key -r -T prefix C-$right resize-pane -R
+bind-key -T prefix : command-prompt
+
+bind-key -T prefix <span class="Constant">&quot;'&quot;</span> split-window
+bind-key -T prefix / split-window -h
+bind-key -T prefix 0 select-window -t :=0
+bind-key -T prefix 1 select-window -t :=1
+bind-key -T prefix 2 select-window -t :=2
+bind-key -T prefix 3 select-window -t :=3
+bind-key -T prefix 4 select-window -t :=4
+bind-key -T prefix 5 select-window -t :=5
+bind-key -T prefix 6 select-window -t :=6
+bind-key -T prefix 7 select-window -t :=7
+bind-key -T prefix 8 select-window -t :=8
+bind-key -T prefix 9 select-window -t :=9
+bind-key -r -T prefix n next-window
+bind-key -r -T prefix p previous-window
+
+bind-key -T prefix ? list-keys
+bind-key -T prefix [ copy-mode
+bind-key -T prefix ] paste-buffer
+bind-key -T prefix c new-window
+bind-key -T prefix d detach-client
+bind-key -T prefix <span class="Constant">&quot;{&quot;</span> swap-pane -U
+bind-key -T prefix <span class="Constant">&quot;}&quot;</span> swap-pane -D
+bind-key -T prefix PPage copy-mode -u
+
+
+</pre>
+</body>
+</html>
